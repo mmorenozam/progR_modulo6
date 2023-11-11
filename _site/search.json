@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html#buenas-prácticas-de-programación",
+    "href": "index.html#buenas-prácticas-de-programación",
+    "title": "Módulo 6: Buenas prácticas de programación",
+    "section": "Buenas prácticas de programación",
+    "text": "Buenas prácticas de programación\nConsejos para evitar esto."
+  },
+  {
+    "objectID": "index.html#organiza-tu-directorio-de-trabajo",
+    "href": "index.html#organiza-tu-directorio-de-trabajo",
+    "title": "Módulo 6: Buenas prácticas de programación",
+    "section": "Organiza tu directorio de trabajo",
+    "text": "Organiza tu directorio de trabajo\n\n\nEl mejor punto de comienzo es tener organizados tus directorios de trabajo.\nComo muchos de los consejos que enunciaré, este responde mucho a tus necesidades y preferencias personales.\nEl trabajar por proyectos en RStudio es una manera versátil y fácil de ayudarte con esa organización."
+  },
+  {
+    "objectID": "index.html#nombrando-objetos-y-funciones",
+    "href": "index.html#nombrando-objetos-y-funciones",
+    "title": "Módulo 6: Buenas prácticas de programación",
+    "section": "Nombrando objetos y funciones",
+    "text": "Nombrando objetos y funciones\n\n\nAparte de los errores que pueden provocarse por nombrar mal objetos que ya vimos, una buena práctica es el dar nombres con significados congruentes a tus objetos en R.\nSi trabajas con una sola tabla de datos a la vez, no importa mucho el nombre que le des a esta, pues sabes que es la única tabla en tu ambiente de trabajo.\nEn cambio, si trabajas con múltiples tablas de datos, te aconsejo evitar nombres genéricos como tabla1, table2, datos_final etc.\nEs mejor usar una estructura que: compartan un prefijo y una parte en la que se diferencien por una descripción.\nEjemplo, supongamos que analizas varias tablas de ingresos y egresos por año y mes de una empresa. Una buena opción sería nombrarlas como:\n\n\n\n\nNota como en este ejemplo, también hemos dejado letras afuera del nombre del mes. Esto ayuda a hacer cambios de manera más rápida con atajos de teclas."
+  },
+  {
+    "objectID": "index.html#nombrando-objetos-y-funciones-.smaller-visibility-uncounted",
+    "href": "index.html#nombrando-objetos-y-funciones-.smaller-visibility-uncounted",
+    "title": "Módulo 6: Buenas prácticas de programación",
+    "section": "Nombrando objetos y funciones {.smaller visibility = “uncounted”}",
+    "text": "Nombrando objetos y funciones {.smaller visibility = “uncounted”}"
+  }
+]

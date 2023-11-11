@@ -1,0 +1,174 @@
+---
+title: "Módulo 6: Buenas prácticas de programación"
+title-slide-attributes:
+  data-background-image: images/logo.jpeg
+  data-background-size: contain
+  data-background-opacity: "0.2"
+author: 
+  - name: Mauricio Moreno, PhD
+logo: images/logo.jpeg
+format: 
+  revealjs:
+    css: styles.css
+    slide-number: true
+    width: 1366
+    preview-links: auto
+    touch: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 4
+      buttons: false
+    revealjs-plugins:
+      - pointer
+---
+
+## Buenas prácticas de programación
+
+Consejos para evitar esto.
+
+![](images/when.jpg){fig-align="center"}
+
+## Organiza tu directorio de trabajo
+
+::: incremental
+
+-   El mejor punto de comienzo es tener organizados tus directorios de trabajo.
+
+-   Como muchos de los consejos que enunciaré, este responde mucho a tus necesidades y preferencias personales.
+
+-   El trabajar por proyectos en RStudio es una manera versátil y fácil de ayudarte con esa organización.
+
+:::
+
+## Nombrando objetos y funciones {.smaller}
+
+::: incremental
+
+-   Aparte de los errores que pueden provocarse por nombrar mal objetos que ya vimos, una buena práctica es el dar nombres con significados congruentes a tus objetos en R.
+
+-   Si trabajas con una sola tabla de datos a la vez, no importa mucho el nombre que le des a esta, pues sabes que es la única tabla en tu ambiente de trabajo.
+
+-   En cambio, si trabajas con múltiples tablas de datos, te aconsejo evitar nombres genéricos como `tabla1`, `table2`, `datos_final` etc.
+
+-   Es mejor usar una estructura que: compartan un prefijo y una parte en la que se diferencien por una descripción.
+
+-   Ejemplo, supongamos que analizas varias tablas de ingresos y egresos por año y mes de una empresa. Una buena opción sería nombrarlas como:
+
+:::
+
+. . .
+
+```{r, eval = F, echo = T}
+ingresos_mrzo_2023
+ingresos_abrl_2023
+ingresos_mayo_2023
+ingresos_juni_2023
+```
+
+. . .
+
+-   Nota como en este ejemplo, también hemos dejado letras afuera del nombre del mes. Esto ayuda a hacer cambios de manera más rápida con atajos de teclas.
+
+## Nombrando objetos y funciones {.smaller visibility="uncounted"}
+
+
+-   Aunque no cubrimos el cómo crear funciones en R, en caso que llegues a hacerlo, es útil dar el nombre más descriptivo posible de lo que hace esa función.
+
+. . .
+
+```{r, eval = F , echo = T}
+funcion_filtrado_filas_vacias <- function(){
+  
+}
+```
+
+. . .
+
+-   Los nombres de las funciones de paquetes de R son generalmente cortos. Esto es gracias a la documentación de ayuda que las acompaña. Para nosotros que no creamos librerías, es más conveniente el llevar a cabo este tipo de nombramiento de funciones.
+
+## Código limpio {.smaller .scrollable}
+
+-   Un código limpio es mucho mas sencillo de leer y revisar. No es lo mismo:
+
+```{r, eval = F , echo = T}
+ranas$Pred<-factor(ranas$Pred,levels=c("C","NL","L"))
+bxplot<-ggboxplot(ranas,x="Pred",y="Age.FromEmergence",color="Pred")
+hsdvals<-emmeans_test(log.Age.FromEmergence~Pred,
+                      data=ranas,p.adjust.method="mvt")
+hsdvals<-add_significance(hsdvals,p.col="p.adj",output.col="p.adj.signif",cutpoints=c(0,0.001,0.01,0.05,0.1,1),symbols=c("***","**","*",".","ns"))
+hsdvals<-hsdvals%>%add_xy_position(x="Pred")
+bxplot+stat_pvalue_manual(hsdvals,y.position=c(120,130,140))
+```
+
+-   Que:
+
+```{r, eval = F , echo = T}
+ranas$Pred <- factor(ranas$Pred, levels = c("C", "NL", "L"))
+
+bxplot <- ggboxplot(ranas,
+                    x = "Pred",
+                    y = "Age.FromEmergence",
+                    color = "Pred")
+
+hsdvals <- emmeans_test(log.Age.FromEmergence ~ Pred,
+                        data = ranas,
+                        p.adjust.method = "mvt")
+
+hsdvals <- add_significance(hsdvals, p.col = "p.adj",
+                            output.col = "p.adj.signif",
+                            cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+                            symbols = c("***", "**", "*", ".", "ns"))
+
+hsdvals <- hsdvals %>%
+  add_xy_position(x = "Pred")
+
+bxplot + stat_pvalue_manual(hsdvals, y.position = c(120, 130, 140))
+```
+
+## Código limpio {visibility="uncounted"}
+
+::: incremental
+
+-   En general:
+
+      -   Deja espacios vacíos antes y despues de `=`, `<-`, `-`, `+`, `%>%` etc
+      
+      -   Un espacio vacío después de `,`
+      
+      -   Da cortes de línea (enter) donde sea necesario para que las líneas de código no sean muy largas
+      
+      -   Deja un espacio vacío entre líneas o conjuntos de líneas que cumplen con una función específica.
+
+:::
+
+## Comenta tu código
+
+::: incremental
+
+-   Tu yo del futuro, le agradecerá a tu yo del pasado por los comentarios que dejes en los scripts que realices.
+
+-   Ya te habrás dado cuenta de que `#` es el operador para comentar.
+
+-   Puedes también crear secciones para navegar tu script usando una sintaxis como `### nombre de la sección ###`
+
+:::
+
+## Guarda la información de tu sesión de trabajo {.smaller}
+
+::: incremental
+
+-   A lo largo del tiempo, las funciones de los paquetes pueden ser dadas de baja (o inclusive los paquetes pueden ser dados de baja).
+
+-   Esto es un problema sobre todo con código que lleva mucho tiempo sin ser usado.
+
+-   Para poder tener una mejor idea de como volver funcional de nuevo códigos viejos, es guardando la información de tu sesión de trabajo.
+
+-   Esto es muy útil sobretodo trabajando en reportes de Quarto. Para ello, basta añadir al final de un chunk de código el siguiente comando de R base
+
+:::
+
+. . .
+
+```{r}
+sessionInfo()
+```
